@@ -16,25 +16,23 @@ const Tweet = (props) => {
   return (
     <>
       <Box maxWidth={"container.sm"} border={"1px"}>
-        <HStack align='start'>
+        <VStack padding={1} align='start'>
+          <HStack spacing={4} height='60px'>
           <Image
             borderRadius='full'
             height='60px'
             // boxSize='60px'
-            marginX={"10px"}
+            marginLeft={"10px"}
             marginY={"10px"}
             src='https://bit.ly/dan-abramov'
             alt='Dan Abramov'
           />
-          <VStack spacing={3}>
-          <HStack justify={"start"} padding={0} margin={0} spacing={4} height='60px'>
             <Box fontWeight={'extrabold'} fontSize={'15pt'}>{props.name}</Box>
             <Box fontWeight={'bold'} fontSize={'15pt'}>{props.userName}</Box>
             <Box fontWeight={'normal'} fontSize={'10pt'}>{props.date}</Box>
           </HStack>
-          <Box padding={'15px'}>{props.text}</Box>
+          <Box padding={'15px'} paddingLeft={'100px'}>{props.text}</Box>
         </VStack>
-      </HStack>
       </Box>
     </>
   );

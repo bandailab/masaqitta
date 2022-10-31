@@ -15,6 +15,8 @@ const Home = () => {
           name="Shota Minegishi"
           userName="@smngs"
           greeting="よろしくおねがいします．"
+          follow="12"
+          follower="30"
         />
         <Tweet
           name="Shota Minegishi"

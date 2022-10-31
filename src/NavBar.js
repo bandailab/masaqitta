@@ -8,7 +8,7 @@ import {
 } from '@chakra-ui/react'
 import * as React from 'react'
 
-const NavBarContents = ['hoge', 'huga', 'piyo', 'foo', 'bar']
+const NavBarContents = ['hoge', 'huga', 'piyo', 'foo', 'bar'];
 
 const NavBar = () => {
   const isDesktop = useBreakpointValue({ base: false, lg: true })
@@ -34,4 +34,4 @@ const NavBar = () => {
   )
 }
 
-export default NavBar
+export default NavBar;

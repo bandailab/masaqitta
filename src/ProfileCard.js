@@ -14,32 +14,31 @@ import * as React from 'react'
 
 const ProfileCard = (props) => {
   return (
-    <Box width={'sm'} height={'xs'} borderWidth={'3px'} borderRadius={'lg'}>
-      <HStack borderWidth={'2px'}>
-        <Image
-          borderRadius='full'
-          boxSize='80px'
-          margin={"5px"}
-          src='https://bit.ly/dan-abramov'
-          alt='Dan Abramov'
-        />
-        <VStack align='start' spacing={1} borderWidth={'1px'}>
-          <Text fontWeight={'extrabold'} fontSize={'20pt'}>{props.name}</Text>
-          <HStack spacing={3} borderWidth={'1px'}>
-            <Text fontWeight={'bold'} fontSize={'15pt'}>{props.userName}</Text>
-            <Badge colorScheme={"green"} variant={"outline"}>M1</Badge>
-          </HStack>
-          <HStack borderWidth={'1px'}>
-            <Box>Follow: {props.follow}</Box>
-            <Box>Follower: {props.follower}</Box>
-            <Button>フォローする</Button>
-          </HStack>
-        </VStack>
-      </HStack>
-      
-      <Box padding={'3px'} borderWidth={'1px'}>
-        {props.greeting}
-      </Box>
+    <Box width={'sm'} height={'xs'} borderWidth={'0.2rem'} borderRadius={'lg'} borderColor='red.400'>
+      <VStack borderWidth={'0.2rem'} borderColor={'green.600'}>
+        <Box>
+          <VStack>
+            <HStack>
+              <Image borderRadius='full' boxSize='80px' margin={'5px'} src='https://bit.ly/dan-abramov' alt='Dan Abramov'/>
+              <VStack>
+                <Text fontWeight={'extrabold'} fontSize={'1.8rem'} lineHeight={'none'}>{props.name}</Text>
+                <HStack>
+                  <Box fontWeight={'bold'} fontSize={'1.2rem'} lineHeight={'none'} justifyContent={'flex-end'}>{props.userName}</Box>
+                  <Badge colorScheme={"green"} variant={"outline"}>M1</Badge>
+                </HStack>
+              </VStack>
+            </HStack>
+            <HStack>
+              <Box>Follow: {props.follow}</Box>
+              <Box>Follower: {props.follower}</Box>
+              <Button>フォローする</Button>
+            </HStack>
+          </VStack>
+        </Box>
+        <Box padding={'3px'} borderWidth={1}>
+          {props.greeting}
+        </Box>
+      </VStack>
     </Box>
   )
 }

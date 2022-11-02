@@ -6,10 +6,12 @@ import {
   HStack, 
   VStack,
   Stack,
-  Container
+  Container,
+  Button
 } from "@chakra-ui/react";
 
 import Tweet from "../Components/Tweet";
+import TweetPostModal from "../Components/TweetPostModal";
 
 import DummyTweets from "../Dummy/DummyTweets.js"
 
@@ -32,6 +34,7 @@ const Home = () => {
               follower="30"
               />
             <WikiList />
+            <TweetPostModal />
           </VStack>
           <Stack>
             {DummyTweets().map((tweet) => {

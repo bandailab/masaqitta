@@ -19,14 +19,14 @@ import axios from "axios";
 import React from "react";
 
 // FIXME: これはあとで App.js にまとめる．
-const baseURL = "http://localhost:8000"
+const baseURL = "http://127.0.0.1:8000"
 
 const Home = () => {
   const [summary, setSummary] = React.useState([]);
 
   React.useEffect(() => {
     axios.get(baseURL + "/tweets").then((response) => {
-      setSummary(response);
+      setSummary(response.data);
     });
   }, []);
 
@@ -50,7 +50,7 @@ const Home = () => {
             <TweetPostModal />
           </VStack>
           <Stack>
-            {summary.data.map((tweet) => {
+            {summary.map((tweet) => {
               return (
                 // Warning: each child in a list should have a unique "key" prop.
                 <Tweet {...tweet} />

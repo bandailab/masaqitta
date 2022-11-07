@@ -11,14 +11,14 @@ const Hello = () => {
 
   React.useEffect(() => {
     axios.get(baseURL + "/hello").then((response) => {
-      setSummary(response);
+      setSummary(response.data);
     });
   }, []);
 
   return (
     <div>
       {console.log(summary)}
-      <div>{summary.data.Hello}</div>
+      <div>{summary.Hello}</div>
       <Link to="/">ほげへ</Link>
     </div>
   );

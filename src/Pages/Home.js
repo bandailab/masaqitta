@@ -58,6 +58,8 @@ const Home = () => {
             })}
           </Stack>
         </HStack>
+        <Link to="/hello">Hello</Link>
+        <Link to="/wiki">Wiki</Link>
       </Container>
     </div>
   );

@@ -13,6 +13,7 @@ import {
 
 import Home from "./Pages/Home";
 import Hello from "./Pages/Hello";
+import Wiki from "./Pages/Wiki"
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/hello" element={<Hello/>} />
+          <Route path="/wiki" element={<Wiki/>}/>
         </Routes>
       </Router> 
     </div>

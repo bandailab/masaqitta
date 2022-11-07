@@ -45,6 +45,7 @@ const Home = () => {
           </Stack>
         </HStack>
         <Link to="/about">ふがへ</Link>
+        <Link to="/wiki">Wiki</Link>
       </Container>
     </div>
   );

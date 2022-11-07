@@ -12,7 +12,7 @@ import {
 } from "react-router-dom";
 
 import Home from "./Pages/Home";
-import About from "./Pages/About";
+import Hello from "./Pages/Hello";
 
 const App = () => {
   return (
@@ -22,7 +22,7 @@ const App = () => {
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About/>} />
+          <Route path="/hello" element={<Hello/>} />
         </Routes>
       </Router> 
     </div>

@@ -15,9 +15,22 @@ import TweetPostModal from "../Components/TweetPostModal";
 
 import DummyTweets from "../Dummy/DummyTweets.js"
 
+import axios from "axios";
+import React from "react";
+
+// FIXME: これはあとで App.js にまとめる．
+const baseURL = "http://localhost:8000"
+
 const Home = () => {
-  return (
-    <div>
+  const [summary, setSummary] = React.useState([]);
+
+  React.useEffect(() => {
+    axios.get(baseURL + "/tweets").then((response) => {
+      setSummary(response);
+    });
+  }, []);
+
+  return ( <div>
       <Container
         /* bg={{base: 'red.200', sm: 'yellow.200', md: 'green.200', lg: 'blue.200'}} */
         maxWidth={{base: 'full', lg: '1920px'}}
@@ -37,14 +50,14 @@ const Home = () => {
             <TweetPostModal />
           </VStack>
           <Stack>
-            {DummyTweets().map((tweet) => {
+            {summary.data.map((tweet) => {
               return (
+                // Warning: each child in a list should have a unique "key" prop.
                 <Tweet {...tweet} />
               )
             })}
           </Stack>
         </HStack>
-        <Link to="/about">ふがへ</Link>
       </Container>
     </div>
   );

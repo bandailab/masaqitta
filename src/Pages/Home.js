@@ -23,14 +23,29 @@ const baseURL = "http://127.0.0.1:8000"
 
 const Home = () => {
   const [summary, setSummary] = React.useState([]);
+  const [error, setError] = React.useState([]);
 
   React.useEffect(() => {
-    axios.get(baseURL + "/tweets").then((response) => {
-      setSummary(response.data);
-    });
+    axios.get(baseURL + "/tweets")
+      .then((response) => {
+        setSummary(response);
+      })
+      .catch((error) => {
+        console.log(error.response);
+        console.log(error.config);
+        setError(error);
+      });
   }, []);
 
-  return ( <div>
+  if (summary.data === undefined) {
+    return (
+      // FIXME: イケてない
+      <div>An error was occured.</div>
+    )
+  }
+
+  return ( 
+    <div>
       <Container
         /* bg={{base: 'red.200', sm: 'yellow.200', md: 'green.200', lg: 'blue.200'}} */
         maxWidth={{base: 'full', lg: '1920px'}}
@@ -50,12 +65,12 @@ const Home = () => {
             <TweetPostModal />
           </VStack>
           <Stack>
-            {summary.map((tweet) => {
-              return (
+            {
+              summary.data.map((tweet) => {
                 // Warning: each child in a list should have a unique "key" prop.
-                <Tweet {...tweet} />
-              )
-            })}
+                return (<Tweet {...tweet} />)
+              })
+            }
           </Stack>
         </HStack>
         <Link to="/hello">Hello</Link>

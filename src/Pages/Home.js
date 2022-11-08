@@ -15,8 +15,36 @@ import TweetPostModal from "../Components/TweetPostModal";
 
 import DummyTweets from "../Dummy/DummyTweets.js"
 
+import axios from "axios";
+import React from "react";
+
+// FIXME: これはあとで App.js にまとめる．
+const baseURL = "http://127.0.0.1:8000"
+
 const Home = () => {
-  return (
+  const [summary, setSummary] = React.useState([]);
+  const [error, setError] = React.useState([]);
+
+  React.useEffect(() => {
+    axios.get(baseURL + "/tweets")
+      .then((response) => {
+        setSummary(response);
+      })
+      .catch((error) => {
+        console.log(error.response);
+        console.log(error.config);
+        setError(error);
+      });
+  }, []);
+
+  if (summary.data === undefined) {
+    return (
+      // FIXME: イケてない
+      <div>An error was occured.</div>
+    )
+  }
+
+  return ( 
     <div>
       <Container
         /* bg={{base: 'red.200', sm: 'yellow.200', md: 'green.200', lg: 'blue.200'}} */
@@ -37,14 +65,15 @@ const Home = () => {
             <TweetPostModal />
           </VStack>
           <Stack>
-            {DummyTweets().map((tweet) => {
-              return (
-                <Tweet {...tweet} />
-              )
-            })}
+            {
+              summary.data.map((tweet) => {
+                // Warning: each child in a list should have a unique "key" prop.
+                return (<Tweet {...tweet} />)
+              })
+            }
           </Stack>
         </HStack>
-        <Link to="/about">ふがへ</Link>
+        <Link to="/hello">Hello</Link>
         <Link to="/wiki">Wiki</Link>
       </Container>
     </div>

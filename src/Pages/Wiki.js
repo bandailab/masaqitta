@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import WikiCard from "../Components/WikiCard"
 import {
   Box,
@@ -36,7 +35,6 @@ const Wiki = () => {
 
         </HStack>
       </VStack>
-      <Link to="/">Home</Link>
     </div>
     );
 }

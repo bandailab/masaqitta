@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import ProfileCard from "../Components/ProfileCard";
 import WikiList from "../Components/WikiList";
 
@@ -7,7 +6,8 @@ import {
   VStack,
   Stack,
   Container,
-  Button
+  Spinner,
+  Center
 } from "@chakra-ui/react";
 
 import Tweet from "../Components/Tweet";
@@ -73,8 +73,6 @@ const Home = () => {
             }
           </Stack>
         </HStack>
-        <Link to="/hello">Hello</Link>
-        <Link to="/wiki">Wiki</Link>
       </Container>
     </div>
   );

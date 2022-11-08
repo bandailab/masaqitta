@@ -1,8 +1,6 @@
 import axios from "axios";
 import React from "react";
 
-import { Link } from "react-router-dom";
-
 // FIXME: これはあとで App.js にまとめる．
 const baseURL = "http://localhost:8000"
 
@@ -19,7 +17,6 @@ const Hello = () => {
     <div>
       {console.log(summary)}
       <div>{summary.Hello}</div>
-      <Link to="/">ほげへ</Link>
     </div>
   );
 }

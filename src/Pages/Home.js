@@ -13,34 +13,49 @@ import {
 import Tweet from "../Components/Tweet";
 import TweetPostModal from "../Components/TweetPostModal";
 
-import DummyTweets from "../Dummy/DummyTweets.js"
-
-import axios from "axios";
+// import axios from "axios";
+import useAuthAxios from "../api/useAuthAxios"
 import React from "react";
 
 // FIXME: これはあとで App.js にまとめる．
-const baseURL = "http://127.0.0.1:8000"
 
 const Home = () => {
-  const [summary, setSummary] = React.useState([]);
-  const [error, setError] = React.useState([]);
+  // FIXME: 本当は 2 つ以上 useState を宣言したくない．
+  const [tweets, setTweets] = React.useState([]);
+  const [user, setUser] = React.useState([]);
+  const authAxios = useAuthAxios();
 
   React.useEffect(() => {
-    axios.get(baseURL + "/tweets")
-      .then((response) => {
-        setSummary(response);
-      })
-      .catch((error) => {
-        console.log(error.response);
-        console.log(error.config);
-        setError(error);
-      });
+    const getUsers = async () => {
+      try {
+        const response = await authAxios("/user/");
+        setUser(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    const getTweets = async () => {
+      try {
+        const response = await authAxios("/tweet/");
+        setTweets(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    getUsers();
+    getTweets();
   }, []);
 
-  if (summary.data === undefined) {
+  if (tweets.data === undefined) {
     return (
       // FIXME: イケてない
-      <div>An error was occured.</div>
+      <Container maxWidth={{base: 'full', lg: '1920px'}}>
+        <Center>
+          <Spinner />
+        </Center>
+      </Container>
     )
   }
 
@@ -53,20 +68,13 @@ const Home = () => {
       >
         <HStack spacing={"20px"} alignItems={'start'}>
           <VStack spacing={"20px"} paddingRight={10}>
-            <ProfileCard 
-              name="Shota Minegishi"
-              userName="@smngs"
-              greeting="よろしくおねがいします．"
-              imageURL="https://bit.ly/dan-abramov"
-              follow="12"
-              follower="30"
-              />
+            <ProfileCard {...user.data}/>
             <WikiList />
             <TweetPostModal />
           </VStack>
           <Stack>
             {
-              summary.data.map((tweet) => {
+              tweets.data.map((tweet) => {
                 // Warning: each child in a list should have a unique "key" prop.
                 return (<Tweet {...tweet} />)
               })

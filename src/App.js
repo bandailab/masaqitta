@@ -14,6 +14,7 @@ import {
 import Home from "./Pages/Home";
 import Hello from "./Pages/Hello";
 import Wiki from "./Pages/Wiki"
+import AuthProvider from "./api/Auth";
 
 const NavBarContents = [
   {
@@ -36,15 +37,19 @@ const NavBarContents = [
 const App = () => {
   return (
     <div className="App">
-      <Router>
-        <NavBar contents={NavBarContents} />
-        {/* FIXME: 後で Routes.js とかに書き出す */}
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/hello" element={<Hello/>} />
-          <Route path="/wiki" element={<Wiki/>}/>
-        </Routes>
-      </Router> 
+      <AuthProvider>
+        <Router>
+          <NavBar contents={NavBarContents} />
+          {/* FIXME: 後で Routes.js とかに書き出す */}
+          <Routes>
+            <Route path="/*">
+              <Route path="home" element={<Home />} />
+              <Route path="hello" element={<Hello/>} />
+              <Route path="wiki" element={<Wiki/>}/>
+            </Route>
+          </Routes>
+        </Router> 
+      </AuthProvider>
     </div>
   );
 }

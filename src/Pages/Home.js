@@ -15,6 +15,8 @@ import Tweet from "../Components/Tweet";
 import TweetPostModal from "../Components/TweetPostModal";
 
 import DummyTweets from "../Dummy/DummyTweets.js"
+import Recommend from "../Dummy/DummyRecommend";
+
 
 const Home = () => {
   const isDesktop = useBreakpointValue({ base: false, lg: true })

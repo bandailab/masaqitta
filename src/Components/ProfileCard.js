@@ -10,6 +10,8 @@ import {
 import * as React from 'react'
 
 const ProfileCard = (props) => {
+  const [ isFollow, setIsFollow ] = React.useState(true)
+
   return (
     <Box width={'sm'} maxHeight={'xs'} borderWidth={'2px'} borderRadius={'lg'}>
       <HStack>
@@ -38,7 +40,7 @@ const ProfileCard = (props) => {
           <Text>Follower:</Text>
           <Text fontWeight={'bold'}>{props.follower}</Text>
         </VStack>
-        <Button>フォローする</Button>
+        <Button colorScheme={isFollow ? "gray" : "blue"} onClick={() => {setIsFollow(!isFollow)}}>{isFollow ? "フォローする" : "フォロー済み"}</Button>
       </HStack>
       <Box padding={5}>
         {props.greeting}

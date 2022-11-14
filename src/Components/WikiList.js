@@ -1,4 +1,7 @@
-import { Box, Text, VStack, Image } from "@chakra-ui/react";
+import { Box, Text, VStack, Image, Textarea } from "@chakra-ui/react";
+import DummyRecommend from "../Dummy/DummyRecommend";
+import Recommend from "./Recommend";
+
 
 const WikiList = () => {
   return (
@@ -6,12 +9,15 @@ const WikiList = () => {
       <Box width={'sm'} height={'xs'} borderWidth={'1px'} borderRadius={'lg'}>
         <Text fontWeight={"bold"} fontSize={"20pt"} padding={"10pt"} colorScheme={"gray"}>
           # おすすめ記事
+
         </Text>
 
         <VStack>
-          <Box borderWidth={"1px"} borderRadius={'lg'} width={'22em'} >
-            <Image></Image>
-          </Box>
+          {DummyRecommend().map((recommend) => {
+                return (
+                  <Recommend {...recommend} />
+                )
+              })}
         </VStack>
       </Box>
     </div>

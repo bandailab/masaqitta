@@ -9,6 +9,8 @@ import {
 
 import { Link } from "../Atoms/Link"
 
+import LoginButton from "../Atoms/LoginButton"
+
 import * as React from 'react'
 
 const NavBar = (props) => {
@@ -30,7 +32,7 @@ const NavBar = (props) => {
 
         {/* TODO: ここもっといい書き方ある */}
         <HStack paddingLeft={5}>
-          <Button bgColor={'teal.400'} color='white'>Login</Button>
+          <LoginButton />
         </HStack>
       </HStack>
     </Box>

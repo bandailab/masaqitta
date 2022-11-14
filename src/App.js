@@ -16,8 +16,8 @@ import Wiki from "./Pages/Wiki"
 
 const NavBarContents = [
   {
-    key: 'root',
-    name: 'root',
+    key: 'tweet',
+    name: 'tweet',
     link: '/',
   },
   {

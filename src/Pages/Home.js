@@ -36,7 +36,7 @@ const Home = () => {
             <WikiList />
             <TweetPostModal />
           </VStack>
-          <Stack>
+          <Stack paddingBottom={10}>
             {DummyTweets().map((tweet) => {
               return (
                 <Tweet {...tweet} />
@@ -44,8 +44,6 @@ const Home = () => {
             })}
           </Stack>
         </HStack>
-        <Link to="/about">ふがへ</Link>
-        <Link to="/wiki">Wiki</Link>
       </Container>
     </div>
   );

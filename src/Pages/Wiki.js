@@ -36,7 +36,6 @@ const Wiki = () => {
 
         </HStack>
       </VStack>
-      <Link to="/">Home</Link>
     </div>
     );
 }

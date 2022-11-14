@@ -12,18 +12,29 @@ import {
 } from "react-router-dom";
 
 import Home from "./Pages/Home";
-import About from "./Pages/About";
 import Wiki from "./Pages/Wiki"
+
+const NavBarContents = [
+  {
+    key: 'root',
+    name: 'root',
+    link: '/',
+  },
+  {
+    key: 'wiki',
+    name: 'wiki',
+    link: '/wiki/',
+  },
+]
 
 const App = () => {
   return (
     <div className="App">
-      <NavBar />
-      {/* FIXME: 後で Routes.js とかに書き出す */}
       <Router>
+        <NavBar contents={NavBarContents} />
+        {/* FIXME: 後で Routes.js とかに書き出す */}
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About/>} />
           <Route path="/wiki" element={<Wiki/>}/>
         </Routes>
       </Router> 

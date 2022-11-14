@@ -16,8 +16,8 @@ import * as React from 'react'
 
 const WikiCard = (props) => {
   return (
-    <Box maxW='xs' maxH='xs' borderWidth='1px' borderRadius='lg' overflow='hidden'>
-      <Image src={props.imageUrl} alt={props.imageAlt} boxSizing/>
+    <Box width='xs' height='xs' borderWidth='1px' borderRadius='lg' overflow='hidden'>
+      <Image src={props.imageUrl} alt={props.imageAlt}  boxSizing/>
 
       <Box p='10'>
         <Box display='flex' alignItems='baseline'>
